@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Arquivo público de todos os resumos enviados aos inscritos." />
+    <title>E-mails enviados · Acompanhamento Político</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/archive.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">Acompanhamento Político</a>
+        <nav class="site-nav" aria-label="Principal">
+        <a href="/">Votações</a>
+        <a href="/parlamentares">Parlamentares</a>
+        <a href="/ausencias">Quem não votou</a>
+        <a href="/arquivo" aria-current="page">E-mails enviados</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Todos os e-mails enviados</h1>
+      <p class="lead">Transparência total: cada resumo enviado aos inscritos fica aqui, exatamente como foi enviado, com o número de envios e de falhas.</p>
+      <form id="filters" class="filters" role="search">
+        <input type="search" name="q" maxlength="100" placeholder="Buscar no conteúdo (lei, assunto)" aria-label="Buscar no conteúdo" />
+        <select name="chamber" aria-label="Casa">
+            <option value="">Câmara e Senado</option>
+            <option value="CAMARA">Câmara</option>
+            <option value="SENADO">Senado</option>
+          </select>
+        <label class="small muted">De <input type="date" name="from" /></label>
+        <label class="small muted">Até <input type="date" name="to" /></label>
+        <button type="submit">Filtrar</button>
+      </form>
+      <div id="list" aria-live="polite"></div>
+      <div id="pager" class="pager"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Dados oficiais: <a href="https://dadosabertos.camara.leg.br" rel="noopener noreferrer">Dados Abertos da Câmara dos Deputados</a> e <a href="https://legis.senado.leg.br/dadosabertos" rel="noopener noreferrer">Dados Abertos do Senado Federal</a>. Atualizado diariamente.</p>
+        <p><a href="/privacidade">Privacidade</a> · <a href="/arquivo">Todos os e-mails enviados</a> · <a href="/cancelar">Cancelar inscrição</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

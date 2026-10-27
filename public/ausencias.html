@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Parlamentares que mais deixaram de votar em votações nominais." />
+    <title>Quem não votou · Acompanhamento Político</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/absences.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">Acompanhamento Político</a>
+        <nav class="site-nav" aria-label="Principal">
+        <a href="/">Votações</a>
+        <a href="/parlamentares">Parlamentares</a>
+        <a href="/ausencias" aria-current="page">Quem não votou</a>
+        <a href="/arquivo">E-mails enviados</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Quem não votou</h1>
+      <p class="lead">Parlamentares em exercício que não registraram voto em votações nominais de leis no período.</p>
+      <p class="notice small">Não registrar voto não significa necessariamente falta ao trabalho: pode haver licença, missão oficial ou atividade em comissão. O Senado informa essas justificativas (coluna "Justificadas"); a Câmara não as informa por votação.</p>
+      <form id="filters" class="filters">
+        <select name="chamber" aria-label="Casa">
+            <option value="">Câmara e Senado</option>
+            <option value="CAMARA">Câmara</option>
+            <option value="SENADO">Senado</option>
+          </select>
+        <label class="small muted">De <input type="date" name="from" /></label>
+        <label class="small muted">Até <input type="date" name="to" /></label>
+        <button type="submit">Filtrar</button>
+      </form>
+      <p id="period" class="muted small"></p>
+      <div id="list" aria-live="polite"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Dados oficiais: <a href="https://dadosabertos.camara.leg.br" rel="noopener noreferrer">Dados Abertos da Câmara dos Deputados</a> e <a href="https://legis.senado.leg.br/dadosabertos" rel="noopener noreferrer">Dados Abertos do Senado Federal</a>. Atualizado diariamente.</p>
+        <p><a href="/privacidade">Privacidade</a> · <a href="/arquivo">Todos os e-mails enviados</a> · <a href="/cancelar">Cancelar inscrição</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Busque deputados e senadores e veja como votaram." />
+    <title>Parlamentares · Acompanhamento Político</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/parliamentarians.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">Acompanhamento Político</a>
+        <nav class="site-nav" aria-label="Principal">
+        <a href="/">Votações</a>
+        <a href="/parlamentares" aria-current="page">Parlamentares</a>
+        <a href="/ausencias">Quem não votou</a>
+        <a href="/arquivo">E-mails enviados</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Parlamentares</h1>
+      <p class="lead">Busque um deputado ou senador para ver todos os votos registrados.</p>
+      <form id="search-form" class="filters" role="search">
+        <input type="search" name="q" maxlength="100" placeholder="Nome" aria-label="Nome" />
+        <select name="chamber" aria-label="Casa">
+            <option value="">Câmara e Senado</option>
+            <option value="CAMARA">Câmara</option>
+            <option value="SENADO">Senado</option>
+          </select>
+        <select name="state" aria-label="UF">
+          <option value="">Todas as UFs</option>
+          <option>AC</option><option>AL</option><option>AM</option><option>AP</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MG</option><option>MS</option><option>MT</option><option>PA</option><option>PB</option><option>PE</option><option>PI</option><option>PR</option><option>RJ</option><option>RN</option><option>RO</option><option>RR</option><option>RS</option><option>SC</option><option>SE</option><option>SP</option><option>TO</option>
+        </select>
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="list" aria-live="polite"></div>
+      <div id="pager" class="pager"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Dados oficiais: <a href="https://dadosabertos.camara.leg.br" rel="noopener noreferrer">Dados Abertos da Câmara dos Deputados</a> e <a href="https://legis.senado.leg.br/dadosabertos" rel="noopener noreferrer">Dados Abertos do Senado Federal</a>. Atualizado diariamente.</p>
+        <p><a href="/privacidade">Privacidade</a> · <a href="/arquivo">Todos os e-mails enviados</a> · <a href="/cancelar">Cancelar inscrição</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

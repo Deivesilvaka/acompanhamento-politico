@@ -1,0 +1,59 @@
+# Ambiente local. Portas expostas só em 127.0.0.1 (não ficam acessíveis na rede).
+services:
+  db:
+    image: postgres:17.11-alpine
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?defina DB_PASSWORD no .env}
+      POSTGRES_USER: ${DB_USERNAME:?defina DB_USERNAME no .env}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ./src/config/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '127.0.0.1:${DB_PORT}:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USERNAME} -d ${DB_NAME}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # SMTP de desenvolvimento: captura os e-mails, nada sai para a internet.
+  # Caixa de entrada em http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:v1.32.0
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 'true'
+      MP_SMTP_REQUIRE_STARTTLS: 'true'
+      MP_SMTP_TLS_CERT: sans:localhost,mailpit
+      MP_SMTP_TLS_KEY: sans:localhost,mailpit
+      MP_MAX_MESSAGES: 2000
+      # Permite simular falhas SMTP (4xx/5xx) para testar reenvio: http://localhost:8025/api/v1/chaos
+      MP_ENABLE_CHAOS: 'true'
+    ports:
+      - '127.0.0.1:1025:1025'
+      - '127.0.0.1:8025:8025'
+
+  api:
+    build: .
+    profiles: ['api']
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      NODE_ENV: local
+      APP_PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      MAIL_HOST: mailpit
+      MAIL_PORT: 1025
+    ports:
+      - '127.0.0.1:${APP_PORT:-3000}:3000'
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  postgres_data:

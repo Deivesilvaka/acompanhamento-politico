@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Resumo diário e gratuito das leis votadas no Congresso: quem votou a favor, contra e quem não votou." />
+    <title>Acompanhamento Político</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/home.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">Acompanhamento Político</a>
+        <nav class="site-nav" aria-label="Principal">
+        <a href="/" aria-current="page">Votações</a>
+        <a href="/parlamentares">Parlamentares</a>
+        <a href="/ausencias">Quem não votou</a>
+        <a href="/arquivo">E-mails enviados</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Saiba como seus representantes votaram</h1>
+      <p class="lead">Todo dia de manhã, um resumo simples das leis votadas na Câmara e no Senado: o resultado, quem votou a favor, quem votou contra e quem não votou.</p>
+
+      <section class="card subscribe" aria-labelledby="subscribe-title">
+        <h2 id="subscribe-title" class="mt-0">Receba no seu e-mail</h2>
+        <form id="subscribe-form" novalidate>
+          <div class="inline">
+            <label class="hidden" for="email">E-mail</label>
+            <input id="email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="seu@email.com" />
+            <button type="submit">Quero receber</button>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="acceptedTerms" required />
+            <span>Li e aceito a <a href="/privacidade">política de privacidade</a>. Guardamos apenas seu e-mail, e você pode cancelar quando quiser com um clique.</span>
+          </label>
+          <p id="subscribe-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <h2>Votações recentes</h2>
+      <form id="search-form" class="filters" role="search">
+        <input type="search" name="q" maxlength="100" placeholder="Busque por lei ou assunto (ex.: PEC 221, saúde)" aria-label="Buscar votações" />
+        <select name="chamber" aria-label="Casa">
+            <option value="">Câmara e Senado</option>
+            <option value="CAMARA">Câmara</option>
+            <option value="SENADO">Senado</option>
+          </select>
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="votings" aria-live="polite"></div>
+      <div id="votings-pager" class="pager"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Dados oficiais: <a href="https://dadosabertos.camara.leg.br" rel="noopener noreferrer">Dados Abertos da Câmara dos Deputados</a> e <a href="https://legis.senado.leg.br/dadosabertos" rel="noopener noreferrer">Dados Abertos do Senado Federal</a>. Atualizado diariamente.</p>
+        <p><a href="/privacidade">Privacidade</a> · <a href="/arquivo">Todos os e-mails enviados</a> · <a href="/cancelar">Cancelar inscrição</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

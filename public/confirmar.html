@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Confirme sua inscrição." />
+    <title>Confirmar inscrição · Acompanhamento Político</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/token-action.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">Acompanhamento Político</a>
+        <nav class="site-nav" aria-label="Principal">
+        <a href="/">Votações</a>
+        <a href="/parlamentares">Parlamentares</a>
+        <a href="/ausencias">Quem não votou</a>
+        <a href="/arquivo">E-mails enviados</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="card center">
+        <h1>Confirmar inscrição</h1>
+        <p class="lead">Clique no botão abaixo para começar a receber o resumo diário do Congresso.</p>
+        <button id="action" type="button" data-endpoint="/api/subscriptions/confirm" data-missing="Link incompleto. Use o botão do e-mail de confirmação.">Confirmar inscrição</button>
+        <p id="action-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Dados oficiais: <a href="https://dadosabertos.camara.leg.br" rel="noopener noreferrer">Dados Abertos da Câmara dos Deputados</a> e <a href="https://legis.senado.leg.br/dadosabertos" rel="noopener noreferrer">Dados Abertos do Senado Federal</a>. Atualizado diariamente.</p>
+        <p><a href="/privacidade">Privacidade</a> · <a href="/arquivo">Todos os e-mails enviados</a> · <a href="/cancelar">Cancelar inscrição</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
